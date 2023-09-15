@@ -1,7 +1,9 @@
+import { FavoritesList } from "../components/FavoritesList/FavoritesList";
+
 export default function Favorites() {
   return (
     <section>
-      <h1>Favorites</h1>
+      <FavoritesList />
     </section>
   );
 }

@@ -1,7 +1,9 @@
+import { CarList } from "../components/CarList/CarList";
+
 export default function Catalog() {
   return (
     <section>
-      <h1>Catalog</h1>
+      <CarList />
     </section>
   );
 }

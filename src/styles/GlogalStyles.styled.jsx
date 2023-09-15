@@ -16,11 +16,12 @@ export const GlobalStyles = css`
   body {
     margin: 0;
     font-family: "Manrope", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 14px;
     font-style: normal;
-    color: white;
+    color: #8a8a89;
     background-color: black;
+    line-height: calc(18 / 14);
   }
 
   h1,
