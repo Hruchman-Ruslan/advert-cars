@@ -3,12 +3,22 @@ import PropTypes from "prop-types";
 import { CarListForm } from "../CarListForm/CarListForm";
 import { CarItem } from "../CarItem/CarItem";
 import { List } from "../CarList/CarList.styled";
+import { Modal } from "../Modal/Modal";
 
 export const FavoritesList = () => {
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [brands, setBrands] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     const fetchDataFromLocalStorage = () => {
@@ -60,11 +70,15 @@ export const FavoritesList = () => {
   return (
     <div>
       <CarListForm brands={brands} prices={prices} onFilter={handleFilter} />
-      <List>
-        {filteredCars.map((car) => (
-          <CarItem key={car.id} car={car} />
-        ))}
-      </List>
+      {filteredCars.length > 0 && (
+        <List>
+          {filteredCars.map((car) => (
+            <CarItem key={car.id} car={car} openModal={openModal} />
+          ))}
+        </List>
+      )}
+
+      {showModal && <Modal onClose={closeModal} />}
     </div>
   );
 };

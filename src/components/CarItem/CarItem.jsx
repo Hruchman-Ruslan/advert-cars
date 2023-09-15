@@ -11,7 +11,7 @@ import {
 } from "../CarList/CarList.styled";
 import { IconOne } from "./CarItem.syled";
 
-export const CarItem = ({ car }) => {
+export const CarItem = ({ car, openModal }) => {
   const [isCarSelected, setIsCarSelected] = useState(false);
 
   useEffect(() => {
@@ -78,11 +78,14 @@ export const CarItem = ({ car }) => {
           </ItemDetails>
         </ListDetails>
       </WrapperDetails>
-      <button type="button">Click</button>
+      <button type="button" onClick={openModal}>
+        Click
+      </button>
     </Item>
   );
 };
 
 CarItem.propTypes = {
   car: PropTypes.object.isRequired,
+  openModal: PropTypes.func,
 };

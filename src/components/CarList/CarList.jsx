@@ -4,12 +4,22 @@ import { getAllData } from "../../api/advertsApi";
 import { List } from "./CarList.styled";
 import { CarListForm } from "../CarListForm/CarListForm";
 import { CarItem } from "../CarItem/CarItem";
+import { Modal } from "../Modal/Modal";
 
 export const CarList = () => {
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [brands, setBrands] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -61,11 +71,15 @@ export const CarList = () => {
   return (
     <div>
       <CarListForm brands={brands} prices={prices} onFilter={handleFilter} />
-      <List>
-        {filteredCars.map((car) => (
-          <CarItem key={car.id} car={car} />
-        ))}
-      </List>
+      {filteredCars.length > 0 && (
+        <List>
+          {filteredCars.map((car) => (
+            <CarItem key={car.id} car={car} openModal={openModal} />
+          ))}
+        </List>
+      )}
+
+      {showModal && <Modal onClose={closeModal} />}
     </div>
   );
 };
