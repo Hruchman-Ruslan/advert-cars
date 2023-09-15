@@ -12,8 +12,10 @@ export const CarList = () => {
   const [brands, setBrands] = useState([]);
   const [prices, setPrices] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null);
 
-  const openModal = () => {
+  const openModal = (car) => {
+    setSelectedCar(car);
     setShowModal(true);
   };
 
@@ -74,12 +76,12 @@ export const CarList = () => {
       {filteredCars.length > 0 && (
         <List>
           {filteredCars.map((car) => (
-            <CarItem key={car.id} car={car} openModal={openModal} />
+            <CarItem key={car.id} car={car} openModal={() => openModal(car)} />
           ))}
         </List>
       )}
 
-      {showModal && <Modal onClose={closeModal} />}
+      {showModal && <Modal onClose={closeModal} selectedCar={selectedCar} />}
     </div>
   );
 };
