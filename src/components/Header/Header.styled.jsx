@@ -12,7 +12,7 @@ export const List = styled.ul`
 `;
 
 export const Link = styled(NavLink)`
-  color: white;
+  color: black;
   font-size: 24px;
   font-weight: 500;
 `;

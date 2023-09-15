@@ -20,7 +20,7 @@ export const GlobalStyles = css`
     font-size: 14px;
     font-style: normal;
     color: #8a8a89;
-    background-color: black;
+    background-color: white;
     line-height: calc(18 / 14);
   }
 

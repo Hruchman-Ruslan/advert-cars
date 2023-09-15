@@ -71,7 +71,7 @@ export const CarList = () => {
   };
 
   return (
-    <div>
+    <>
       <CarListForm brands={brands} prices={prices} onFilter={handleFilter} />
       {filteredCars.length > 0 && (
         <List>
@@ -82,7 +82,7 @@ export const CarList = () => {
       )}
 
       {showModal && <Modal onClose={closeModal} selectedCar={selectedCar} />}
-    </div>
+    </>
   );
 };
 

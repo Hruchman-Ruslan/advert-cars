@@ -11,6 +11,7 @@ export const Form = styled.form`
   align-items: end;
   flex-wrap: wrap;
   gap: 18px;
+  margin-bottom: 50px;
 `;
 
 export const Test = styled.div`

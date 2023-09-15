@@ -8,8 +8,17 @@ import {
   ListDetails,
   WrapperDetails,
   WrapperTitle,
-} from "../CarList/CarList.styled";
-import { IconOne } from "./CarItem.syled";
+  Make,
+  Year,
+  Model,
+  BoxTitle,
+  WrapperImg,
+  Price,
+  ItemText,
+  Button,
+  BoxItem,
+} from "./CarItem.styled";
+import { IconOne } from "./CarItem.styled";
 
 export const CarItem = ({ car, openModal }) => {
   const [isCarSelected, setIsCarSelected] = useState(false);
@@ -42,45 +51,52 @@ export const CarItem = ({ car, openModal }) => {
 
   return (
     <Item key={car.id}>
-      <Img src={car.img || car.photoLink} alt={car.model} />
-      <IconOne
-        onClick={handleIconOneClick}
-        style={{ fill: isCarSelected ? "blue" : "white" }}
-      />
-      <WrapperTitle>
-        <h2>
-          {car.make}, {car.year}
-        </h2>
-        <p>${car.rentalPrice}</p>
-      </WrapperTitle>
-      <WrapperDetails>
-        <ListDetails>
-          <ItemDetails>
-            <p>{car.address}</p>
-          </ItemDetails>
-          <ItemDetails>
-            <p>{car.rentalCompany}</p>
-          </ItemDetails>
-          <ItemDetails>
-            <p>{car.premium}</p>
-          </ItemDetails>
-          <ItemDetails>
-            <p>{car.type}</p>
-          </ItemDetails>
-          <ItemDetails>
-            <p>{car.model}</p>
-          </ItemDetails>
-          <ItemDetails>
-            <p>{car.mileage}</p>
-          </ItemDetails>
-          <ItemDetails>
-            <p>{car.accessories[0]}</p>
-          </ItemDetails>
-        </ListDetails>
-      </WrapperDetails>
-      <button type="button" onClick={openModal}>
-        Click
-      </button>
+      <BoxItem>
+        <WrapperImg>
+          <Img src={car.img || car.photoLink} alt={car.model} />
+          <IconOne
+            onClick={handleIconOneClick}
+            style={{ fill: isCarSelected ? "blue" : "white" }}
+          />
+        </WrapperImg>
+
+        <WrapperTitle>
+          <BoxTitle>
+            <Make>{car.make}</Make>
+            <Model>{car.model},</Model>
+            <Year>{car.year}</Year>
+          </BoxTitle>
+          <Price>${car.rentalPrice}</Price>
+        </WrapperTitle>
+        <WrapperDetails>
+          <ListDetails>
+            <ItemDetails>
+              <ItemText>{car.address}</ItemText>
+            </ItemDetails>
+            <ItemDetails>
+              <ItemText>{car.rentalCompany}</ItemText>
+            </ItemDetails>
+            <ItemDetails>
+              <ItemText>{car.premium}</ItemText>
+            </ItemDetails>
+            <ItemDetails>
+              <ItemText>{car.type}</ItemText>
+            </ItemDetails>
+            <ItemDetails>
+              <ItemText>{car.model}</ItemText>
+            </ItemDetails>
+            <ItemDetails>
+              <ItemText>{car.mileage}</ItemText>
+            </ItemDetails>
+            <ItemDetails>
+              <ItemText>{car.accessories[0]}</ItemText>
+            </ItemDetails>
+          </ListDetails>
+        </WrapperDetails>
+        <Button type="button" onClick={openModal}>
+          Learn more
+        </Button>
+      </BoxItem>
     </Item>
   );
 };

@@ -51,66 +51,64 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
   }));
 
   return (
-    <div>
-      <Form onSubmit={filterForm.handleSubmit}>
+    <Form onSubmit={filterForm.handleSubmit}>
+      <Label>
+        Car brand
+        <SelectStyles
+          name="brand"
+          onChange={(selectedOption) =>
+            filterForm.setFieldValue("brand", selectedOption.value)
+          }
+          onBlur={filterForm.handleBlur}
+          value={brandOptions.find(
+            (option) => option.value === filterForm.values.brand
+          )}
+          options={brandOptions}
+          placeholder="Enter the text"
+          styles={selectStyles}
+        />
+      </Label>
+      <Label>
+        Price/ 1 hour
+        <SelectStyles
+          name="rentalPrice"
+          onChange={(selectedOption) =>
+            filterForm.setFieldValue("rentalPrice", selectedOption.value)
+          }
+          onBlur={filterForm.handleBlur}
+          value={priceOptions.find(
+            (option) => option.value === filterForm.values.rentalPrice
+          )}
+          options={priceOptions}
+          placeholder="To $"
+          styles={selectStyles}
+        />
+      </Label>
+      <Test>
         <Label>
-          Car brand
-          <SelectStyles
-            name="brand"
-            onChange={(selectedOption) =>
-              filterForm.setFieldValue("brand", selectedOption.value)
-            }
+          Car mileage / km
+          <Input
+            type="number"
+            name="minMileage"
+            onChange={filterForm.handleChange}
             onBlur={filterForm.handleBlur}
-            value={brandOptions.find(
-              (option) => option.value === filterForm.values.brand
-            )}
-            options={brandOptions}
-            placeholder="Enter the text"
-            styles={selectStyles}
+            value={filterForm.values.minMileage}
+            placeholder="From"
           />
         </Label>
         <Label>
-          Price/ 1 hour
-          <SelectStyles
-            name="rentalPrice"
-            onChange={(selectedOption) =>
-              filterForm.setFieldValue("rentalPrice", selectedOption.value)
-            }
+          <Input
+            type="number"
+            name="maxMileage"
+            onChange={filterForm.handleChange}
             onBlur={filterForm.handleBlur}
-            value={priceOptions.find(
-              (option) => option.value === filterForm.values.rentalPrice
-            )}
-            options={priceOptions}
-            placeholder="To $"
-            styles={selectStyles}
+            value={filterForm.values.maxMileage}
+            placeholder="To"
           />
         </Label>
-        <Test>
-          <Label>
-            Car mileage / km
-            <Input
-              type="number"
-              name="minMileage"
-              onChange={filterForm.handleChange}
-              onBlur={filterForm.handleBlur}
-              value={filterForm.values.minMileage}
-              placeholder="From"
-            />
-          </Label>
-          <Label>
-            <Input
-              type="number"
-              name="maxMileage"
-              onChange={filterForm.handleChange}
-              onBlur={filterForm.handleBlur}
-              value={filterForm.values.maxMileage}
-              placeholder="To"
-            />
-          </Label>
-        </Test>
-        <Button type="submit">Search</Button>
-      </Form>
-    </div>
+      </Test>
+      <Button type="submit">Search</Button>
+    </Form>
   );
 };
 
