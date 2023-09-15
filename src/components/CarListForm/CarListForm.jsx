@@ -1,6 +1,13 @@
 import PropTypes from "prop-types";
 import { useFormik } from "formik";
-import Select from "react-select";
+import {
+  Button,
+  Form,
+  Input,
+  Label,
+  SelectStyles,
+  Test,
+} from "./CarListForm.styled";
 
 export const CarListForm = ({ brands, prices, onFilter }) => {
   const initialValues = {
@@ -27,6 +34,10 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
     indicatorSeparator: () => ({
       display: "none",
     }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: "#121417",
+    }),
   };
 
   const brandOptions = brands.map((brand) => ({
@@ -41,10 +52,10 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
 
   return (
     <div>
-      <form onSubmit={filterForm.handleSubmit}>
-        <label>
+      <Form onSubmit={filterForm.handleSubmit}>
+        <Label>
           Car brand
-          <Select
+          <SelectStyles
             name="brand"
             onChange={(selectedOption) =>
               filterForm.setFieldValue("brand", selectedOption.value)
@@ -57,10 +68,10 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
             placeholder="Enter the text"
             styles={selectStyles}
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Price/ 1 hour
-          <Select
+          <SelectStyles
             name="rentalPrice"
             onChange={(selectedOption) =>
               filterForm.setFieldValue("rentalPrice", selectedOption.value)
@@ -73,30 +84,32 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
             placeholder="To $"
             styles={selectStyles}
           />
-        </label>
-        <label>
-          Car mileage / km
-          <input
-            type="number"
-            name="minMileage"
-            onChange={filterForm.handleChange}
-            onBlur={filterForm.handleBlur}
-            value={filterForm.values.minMileage}
-            placeholder="From"
-          />
-        </label>
-        <label>
-          <input
-            type="number"
-            name="maxMileage"
-            onChange={filterForm.handleChange}
-            onBlur={filterForm.handleBlur}
-            value={filterForm.values.maxMileage}
-            placeholder="To"
-          />
-        </label>
-        <button type="submit">Filter</button>
-      </form>
+        </Label>
+        <Test>
+          <Label>
+            Car mileage / km
+            <Input
+              type="number"
+              name="minMileage"
+              onChange={filterForm.handleChange}
+              onBlur={filterForm.handleBlur}
+              value={filterForm.values.minMileage}
+              placeholder="From"
+            />
+          </Label>
+          <Label>
+            <Input
+              type="number"
+              name="maxMileage"
+              onChange={filterForm.handleChange}
+              onBlur={filterForm.handleBlur}
+              value={filterForm.values.maxMileage}
+              placeholder="To"
+            />
+          </Label>
+        </Test>
+        <Button type="submit">Search</Button>
+      </Form>
     </div>
   );
 };
