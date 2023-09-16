@@ -24,7 +24,7 @@ export const CarItem = ({ car, openModal }) => {
   const [isCarSelected, setIsCarSelected] = useState(false);
 
   useEffect(() => {
-    const storedCars = JSON.parse(localStorage.getItem("selectedCars")) || [];
+    const storedCars = JSON.parse(localStorage.getItem("Cars")) || [];
     const isCarAlreadySelected = storedCars.some(
       (selectedCar) => selectedCar.id === car.id
     );
@@ -33,18 +33,18 @@ export const CarItem = ({ car, openModal }) => {
   }, [car.id]);
 
   const handleIconOneClick = () => {
-    const storedCars = JSON.parse(localStorage.getItem("selectedCars")) || [];
+    const storedCars = JSON.parse(localStorage.getItem("Cars")) || [];
     const carIndex = storedCars.findIndex(
       (selectedCar) => selectedCar.id === car.id
     );
 
     if (carIndex === -1) {
       storedCars.push(car);
-      localStorage.setItem("selectedCars", JSON.stringify(storedCars));
+      localStorage.setItem("Cars", JSON.stringify(storedCars));
       setIsCarSelected(true);
     } else {
       storedCars.splice(carIndex, 1);
-      localStorage.setItem("selectedCars", JSON.stringify(storedCars));
+      localStorage.setItem("Cars", JSON.stringify(storedCars));
       setIsCarSelected(false);
     }
   };

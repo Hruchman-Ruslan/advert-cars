@@ -7,7 +7,6 @@ import { Modal } from "../Modal/Modal";
 
 export const FavoritesList = () => {
   const [cars, setCars] = useState([]);
-  const [filteredCars, setFilteredCars] = useState([]);
   const [brands, setBrands] = useState([]);
   const [prices, setPrices] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -25,10 +24,8 @@ export const FavoritesList = () => {
   useEffect(() => {
     const fetchDataFromLocalStorage = () => {
       try {
-        const carsData = JSON.parse(localStorage.getItem("selectedCars")) || [];
-        console.log(carsData);
-        setCars(carsData);
-        setFilteredCars(carsData);
+        const carsData = JSON.parse(localStorage.getItem("Cars")) || [];
+        setCars((prevState) => [...prevState, ...carsData]);
 
         const uniqueBrands = [...new Set(carsData.map((car) => car.make))];
         setBrands(uniqueBrands);
@@ -66,22 +63,21 @@ export const FavoritesList = () => {
       filtered = filtered.filter((car) => car.mileage <= values.maxMileage);
     }
 
-    setFilteredCars(filtered);
+    setCars(filtered);
   };
 
   return (
-    <div>
+    <>
       <CarListForm brands={brands} prices={prices} onFilter={handleFilter} />
-      {filteredCars.length > 0 && (
-        <List>
-          {filteredCars.map((car) => (
-            <CarItem key={car.id} car={car} openModal={() => openModal(car)} />
-          ))}
-        </List>
-      )}
+
+      <List>
+        {cars.map((car) => (
+          <CarItem key={car.id} car={car} openModal={() => openModal(car)} />
+        ))}
+      </List>
 
       {showModal && <Modal onClose={closeModal} selectedCar={selectedCar} />}
-    </div>
+    </>
   );
 };
 

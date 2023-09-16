@@ -6,6 +6,7 @@ export const List = styled.ul`
   column-gap: 30px;
   justify-items: center;
   align-items: center;
+  margin-bottom: 100px;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);

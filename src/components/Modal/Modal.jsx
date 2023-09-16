@@ -37,7 +37,6 @@ import {
 const modalRoot = document.querySelector("#modal-root");
 
 export const Modal = ({ onClose, selectedCar }) => {
-  console.log(selectedCar);
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Escape") {

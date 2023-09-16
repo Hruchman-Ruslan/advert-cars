@@ -5,10 +5,12 @@ import { List } from "./CarList.styled";
 import { CarListForm } from "../CarListForm/CarListForm";
 import { CarItem } from "../CarItem/CarItem";
 import { Modal } from "../Modal/Modal";
+import { LoadMore } from "../LoadMore/LoadMore";
+import { limit } from "../../constans/constans";
 
 export const CarList = () => {
+  const [page, setPage] = useState(1);
   const [cars, setCars] = useState([]);
-  const [filteredCars, setFilteredCars] = useState([]);
   const [brands, setBrands] = useState([]);
   const [prices, setPrices] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -26,10 +28,8 @@ export const CarList = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const carsData = await getAllData();
-        console.log(carsData);
-        setCars(carsData);
-        setFilteredCars(carsData);
+        const carsData = await getAllData(page, limit);
+        setCars((prevState) => [...prevState, ...carsData]);
 
         const uniqueBrands = [...new Set(carsData.map((car) => car.make))];
         setBrands(uniqueBrands);
@@ -44,7 +44,7 @@ export const CarList = () => {
     }
 
     fetchData();
-  }, []);
+  }, [page]);
 
   const handleFilter = (values) => {
     let filtered = [...cars];
@@ -67,19 +67,24 @@ export const CarList = () => {
       filtered = filtered.filter((car) => car.mileage <= values.maxMileage);
     }
 
-    setFilteredCars(filtered);
+    setCars(filtered);
+  };
+
+  const handleClick = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   return (
     <>
       <CarListForm brands={brands} prices={prices} onFilter={handleFilter} />
-      {filteredCars.length > 0 && (
-        <List>
-          {filteredCars.map((car) => (
-            <CarItem key={car.id} car={car} openModal={() => openModal(car)} />
-          ))}
-        </List>
-      )}
+
+      <List>
+        {cars.map((car) => (
+          <CarItem key={car.id} car={car} openModal={() => openModal(car)} />
+        ))}
+      </List>
+
+      <LoadMore onClick={handleClick} />
 
       {showModal && <Modal onClose={closeModal} selectedCar={selectedCar} />}
     </>
