@@ -6,7 +6,8 @@ import {
   Input,
   Label,
   SelectStyles,
-  Test,
+  WrapperInput,
+  SelectedStyled,
 } from "./CarListForm.styled";
 
 export const CarListForm = ({ brands, prices, onFilter }) => {
@@ -24,22 +25,6 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
       onFilter(values);
     },
   });
-
-  const selectStyles = {
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      transform: state.selectProps.menuIsOpen
-        ? "rotate(180deg)"
-        : "rotate(0deg)",
-    }),
-    indicatorSeparator: () => ({
-      display: "none",
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      color: "#121417",
-    }),
-  };
 
   const brandOptions = brands.map((brand) => ({
     value: brand,
@@ -66,7 +51,7 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
           )}
           options={brandOptions}
           placeholder="Enter the text"
-          styles={selectStyles}
+          styles={SelectedStyled}
         />
       </Label>
       <Label>
@@ -82,10 +67,10 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
           )}
           options={priceOptions}
           placeholder="To $"
-          styles={selectStyles}
+          styles={SelectedStyled}
         />
       </Label>
-      <Test>
+      <WrapperInput>
         <Label>
           Car mileage / km
           <Input
@@ -107,7 +92,7 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
             placeholder="To"
           />
         </Label>
-      </Test>
+      </WrapperInput>
       <Button type="submit">Search</Button>
     </Form>
   );

@@ -1,6 +1,21 @@
 import styled from "@emotion/styled";
 import Select from "react-select";
 
+export const SelectedStyled = {
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    transform: state.selectProps.menuIsOpen ? "rotate(180deg)" : "rotate(0deg)",
+  }),
+
+  indicatorSeparator: () => ({
+    display: "none",
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: "#121417",
+  }),
+};
+
 export const SelectStyles = styled(Select)`
   margin-top: 10px;
 `;
@@ -14,7 +29,7 @@ export const Form = styled.form`
   margin-bottom: 50px;
 `;
 
-export const Test = styled.div`
+export const WrapperInput = styled.div`
   display: flex;
   align-items: end;
 `;

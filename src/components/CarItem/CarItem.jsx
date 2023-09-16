@@ -36,6 +36,7 @@ export const CarItem = ({ car, openModal, reload }) => {
           </BoxTitle>
           <Price>${car.rentalPrice}</Price>
         </WrapperTitle>
+
         <WrapperDetails>
           <ListDetails>
             <ItemDetails>
@@ -61,6 +62,7 @@ export const CarItem = ({ car, openModal, reload }) => {
             </ItemDetails>
           </ListDetails>
         </WrapperDetails>
+
         <Button type="button" onClick={openModal}>
           Learn more
         </Button>
