@@ -7,6 +7,7 @@ import { Modal } from "../Modal/Modal";
 
 export const FavoritesList = () => {
   const [cars, setCars] = useState([]);
+  const [filteredCars, setFilteredCars] = useState([]);
   const [brands, setBrands] = useState([]);
   const [prices, setPrices] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -26,6 +27,7 @@ export const FavoritesList = () => {
       try {
         const carsData = JSON.parse(localStorage.getItem("Cars")) || [];
         setCars((prevState) => [...prevState, ...carsData]);
+        setFilteredCars((prevState) => [...prevState, ...carsData]);
 
         const uniqueBrands = [...new Set(carsData.map((car) => car.make))];
         setBrands(uniqueBrands);
@@ -63,7 +65,7 @@ export const FavoritesList = () => {
       filtered = filtered.filter((car) => car.mileage <= values.maxMileage);
     }
 
-    setCars(filtered);
+    setFilteredCars(filtered);
   };
 
   return (
@@ -71,8 +73,13 @@ export const FavoritesList = () => {
       <CarListForm brands={brands} prices={prices} onFilter={handleFilter} />
 
       <List>
-        {cars.map((car) => (
-          <CarItem key={car.id} car={car} openModal={() => openModal(car)} />
+        {filteredCars.map((car) => (
+          <CarItem
+            key={car.id}
+            car={car}
+            openModal={() => openModal(car)}
+            reload={true}
+          />
         ))}
       </List>
 

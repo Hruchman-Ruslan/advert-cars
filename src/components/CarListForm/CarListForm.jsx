@@ -19,6 +19,7 @@ export const CarListForm = ({ brands, prices, onFilter }) => {
 
   const filterForm = useFormik({
     initialValues,
+
     onSubmit: (values) => {
       onFilter(values);
     },

@@ -20,7 +20,7 @@ import {
 } from "./CarItem.styled";
 import { IconOne } from "./CarItem.styled";
 
-export const CarItem = ({ car, openModal }) => {
+export const CarItem = ({ car, openModal, reload }) => {
   const [isCarSelected, setIsCarSelected] = useState(false);
 
   useEffect(() => {
@@ -46,6 +46,9 @@ export const CarItem = ({ car, openModal }) => {
       storedCars.splice(carIndex, 1);
       localStorage.setItem("Cars", JSON.stringify(storedCars));
       setIsCarSelected(false);
+      if (reload) {
+        window.location.reload();
+      }
     }
   };
 
@@ -104,4 +107,5 @@ export const CarItem = ({ car, openModal }) => {
 CarItem.propTypes = {
   car: PropTypes.object.isRequired,
   openModal: PropTypes.func,
+  reload: PropTypes.bool,
 };

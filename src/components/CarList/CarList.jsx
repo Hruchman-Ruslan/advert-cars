@@ -11,6 +11,7 @@ import { limit } from "../../constans/constans";
 export const CarList = () => {
   const [page, setPage] = useState(1);
   const [cars, setCars] = useState([]);
+  const [filteredCars, setFilteredCars] = useState([]);
   const [brands, setBrands] = useState([]);
   const [prices, setPrices] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -30,6 +31,7 @@ export const CarList = () => {
       try {
         const carsData = await getAllData(page, limit);
         setCars((prevState) => [...prevState, ...carsData]);
+        setFilteredCars((prevState) => [...prevState, ...carsData]);
 
         const uniqueBrands = [...new Set(carsData.map((car) => car.make))];
         setBrands(uniqueBrands);
@@ -67,7 +69,7 @@ export const CarList = () => {
       filtered = filtered.filter((car) => car.mileage <= values.maxMileage);
     }
 
-    setCars(filtered);
+    setFilteredCars(filtered);
   };
 
   const handleClick = () => {
@@ -79,8 +81,13 @@ export const CarList = () => {
       <CarListForm brands={brands} prices={prices} onFilter={handleFilter} />
 
       <List>
-        {cars.map((car) => (
-          <CarItem key={car.id} car={car} openModal={() => openModal(car)} />
+        {filteredCars.map((car) => (
+          <CarItem
+            key={car.id}
+            car={car}
+            openModal={() => openModal(car)}
+            reload={false}
+          />
         ))}
       </List>
 

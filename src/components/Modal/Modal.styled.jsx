@@ -29,6 +29,7 @@ export const Close = styled(AiOutlineClose)`
   top: 16px;
   right: 16px;
   font-size: 24px;
+  cursor: pointer;
 `;
 
 export const WrapperImg = styled.div`
