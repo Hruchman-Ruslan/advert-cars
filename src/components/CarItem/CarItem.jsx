@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 
 import {
   Item,
@@ -18,49 +17,15 @@ import {
   Button,
   BoxItem,
 } from "./CarItem.styled";
-import { IconOne } from "./CarItem.styled";
+import { CheckIcon } from "../CheckIcon/CheckIcon";
 
 export const CarItem = ({ car, openModal, reload }) => {
-  const [isCarSelected, setIsCarSelected] = useState(false);
-
-  useEffect(() => {
-    const storedCars = JSON.parse(localStorage.getItem("Cars")) || [];
-    const isCarAlreadySelected = storedCars.some(
-      (selectedCar) => selectedCar.id === car.id
-    );
-
-    setIsCarSelected(isCarAlreadySelected);
-  }, [car.id]);
-
-  const handleIconOneClick = () => {
-    const storedCars = JSON.parse(localStorage.getItem("Cars")) || [];
-    const carIndex = storedCars.findIndex(
-      (selectedCar) => selectedCar.id === car.id
-    );
-
-    if (carIndex === -1) {
-      storedCars.push(car);
-      localStorage.setItem("Cars", JSON.stringify(storedCars));
-      setIsCarSelected(true);
-    } else {
-      storedCars.splice(carIndex, 1);
-      localStorage.setItem("Cars", JSON.stringify(storedCars));
-      setIsCarSelected(false);
-      if (reload) {
-        window.location.reload();
-      }
-    }
-  };
-
   return (
     <Item key={car.id}>
       <BoxItem>
         <WrapperImg>
           <Img src={car.img || car.photoLink} alt={car.model} />
-          <IconOne
-            onClick={handleIconOneClick}
-            style={{ fill: isCarSelected ? "blue" : "white" }}
-          />
+          <CheckIcon car={car} reload={reload} />
         </WrapperImg>
 
         <WrapperTitle>
@@ -107,5 +72,5 @@ export const CarItem = ({ car, openModal, reload }) => {
 CarItem.propTypes = {
   car: PropTypes.object.isRequired,
   openModal: PropTypes.func,
-  reload: PropTypes.bool,
+  reload: PropTypes.bool.isRequired,
 };

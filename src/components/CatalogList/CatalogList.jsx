@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getAllData } from "../../api/advertsApi";
-import { List } from "./CarList.styled";
+import { List } from "./CatalogList.styled";
 import { CarListForm } from "../CarListForm/CarListForm";
 import { CarItem } from "../CarItem/CarItem";
 import { Modal } from "../Modal/Modal";
 import { LoadMore } from "../LoadMore/LoadMore";
 import { limit } from "../../constans/constans";
 
-export const CarList = () => {
+export const CatalogList = () => {
   const [page, setPage] = useState(1);
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
@@ -98,6 +98,6 @@ export const CarList = () => {
   );
 };
 
-CarList.propTypes = {
+CatalogList.propTypes = {
   cars: PropTypes.array,
 };

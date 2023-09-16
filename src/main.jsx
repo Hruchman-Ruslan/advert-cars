@@ -6,10 +6,10 @@ import { BrowserRouter } from "react-router-dom";
 import { GlobalStyles } from "./styles/GlogalStyles.styled.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/advert-cars">
-      <Global styles={GlobalStyles} />
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter basename="/advert-cars">
+    <Global styles={GlobalStyles} />
+    <App />
+  </BrowserRouter>
+  // </React.StrictMode>
 );

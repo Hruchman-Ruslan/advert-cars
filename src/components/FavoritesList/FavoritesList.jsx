@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { CarListForm } from "../CarListForm/CarListForm";
 import { CarItem } from "../CarItem/CarItem";
-import { List } from "../CarList/CarList.styled";
+import { List } from "../CatalogList/CatalogList.styled";
 import { Modal } from "../Modal/Modal";
 
 export const FavoritesList = () => {
