@@ -2,14 +2,8 @@ import styled from "@emotion/styled";
 
 export const Item = styled.li`
   max-width: 400px;
+  height: 100%;
   position: relative;
-`;
-
-export const BoxItem = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center; */
 `;
 
 export const WrapperTitle = styled.div`
@@ -48,7 +42,7 @@ export const WrapperImg = styled.div`
 `;
 
 export const Img = styled.img`
-  width: "100%";
+  width: 100%;
   height: 268px;
 
   border-radius: 14px;
@@ -62,8 +56,11 @@ export const Price = styled.p`
 `;
 
 export const WrapperDetails = styled.div`
-  width: "100%";
   margin-bottom: 28px;
+
+  /* @media (max-width: 1028px) {
+    margin-bottom: 48px;
+  } */
 `;
 
 export const ListDetails = styled.ul`
@@ -109,4 +106,11 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: calc(20 / 14);
+
+  :hover,
+  :focus {
+    background: #0b44cd;
+    filter: drop-shadow(0 0 10px #0b44cd);
+    transition: filter 0.5s ease-out;
+  }
 `;

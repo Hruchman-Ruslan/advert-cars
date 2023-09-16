@@ -1,7 +1,9 @@
+import { Section } from "../components/shared/Section.styled";
+
 export default function Home() {
   return (
-    <section>
+    <Section>
       <div>Home</div>
-    </section>
+    </Section>
   );
 }

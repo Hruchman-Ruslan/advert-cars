@@ -70,4 +70,11 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: calc(20 / 14);
+
+  :hover,
+  :focus {
+    background: #3470ff;
+    filter: drop-shadow(0 0 10px #3470ff);
+    transition: filter 0.5s ease-out;
+  }
 `;

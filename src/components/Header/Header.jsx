@@ -1,21 +1,21 @@
-import { Link, List } from "./Header.styled";
+import { HeaderContainer, Item, Link, List } from "./Header.styled";
 
 export const Header = () => {
   return (
-    <header>
+    <HeaderContainer>
       <nav>
         <List>
-          <li>
+          <Item>
             <Link to="/">Home</Link>
-          </li>
-          <li>
+          </Item>
+          <Item>
             <Link to="/catalog">Catalog</Link>
-          </li>
-          <li>
+          </Item>
+          <Item>
             <Link to="/favorites">Favorites</Link>
-          </li>
+          </Item>
         </List>
       </nav>
-    </header>
+    </HeaderContainer>
   );
 };

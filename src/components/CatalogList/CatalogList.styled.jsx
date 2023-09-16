@@ -2,16 +2,14 @@ import styled from "@emotion/styled";
 
 export const List = styled.ul`
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
   row-gap: 50px;
-  column-gap: 30px;
   justify-items: center;
   align-items: center;
   margin-bottom: 100px;
 
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media screen and (min-width: 1240px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  /* @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  } */
 `;
