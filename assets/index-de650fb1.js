@@ -102,7 +102,7 @@ Error generating stack: `+o.message+`
   justify-content: center;
   align-items: center;
   height: 100vh;
-`,S0=et(g0)``,k0=()=>F.jsxs(h0,{children:[F.jsx(p0,{}),F.jsx("main",{children:F.jsx(S.Suspense,{fallback:F.jsx(w0,{children:F.jsx(S0,{})}),children:F.jsx(Vv,{})})})]}),x0=S.lazy(()=>ia(()=>import("./Home-569a73e5.js"),["assets/Home-569a73e5.js","assets/Section.styled-041f7201.js"])),E0=S.lazy(()=>ia(()=>import("./Catalog-6fd7fa00.js"),["assets/Catalog-6fd7fa00.js","assets/Modal-8791525d.js","assets/Section.styled-041f7201.js"])),C0=S.lazy(()=>ia(()=>import("./Favorites-4c836731.js"),["assets/Favorites-4c836731.js","assets/Modal-8791525d.js","assets/Section.styled-041f7201.js"]));function P0(){return F.jsxs(Qv,{children:[F.jsxs(qt,{path:"/",element:F.jsx(k0,{}),children:[F.jsx(qt,{index:!0,element:F.jsx(x0,{})}),F.jsx(qt,{path:"/catalog",element:F.jsx(E0,{})}),F.jsx(qt,{path:"/favorites",element:F.jsx(C0,{})})]}),F.jsx(qt,{path:"*",element:F.jsx(Wv,{to:"/"})})]})}const _0=gd`
+`,S0=et(g0)``,k0=()=>F.jsxs(h0,{children:[F.jsx(p0,{}),F.jsx("main",{children:F.jsx(S.Suspense,{fallback:F.jsx(w0,{children:F.jsx(S0,{})}),children:F.jsx(Vv,{})})})]}),x0=S.lazy(()=>ia(()=>import("./Home-9b647bc7.js"),["assets/Home-9b647bc7.js","assets/Section.styled-f1686e8e.js"])),E0=S.lazy(()=>ia(()=>import("./Catalog-38322c39.js"),["assets/Catalog-38322c39.js","assets/Modal-4d837f26.js","assets/Section.styled-f1686e8e.js"])),C0=S.lazy(()=>ia(()=>import("./Favorites-5fae8d37.js"),["assets/Favorites-5fae8d37.js","assets/Modal-4d837f26.js","assets/Section.styled-f1686e8e.js"]));function P0(){return F.jsxs(Qv,{children:[F.jsxs(qt,{path:"/",element:F.jsx(k0,{}),children:[F.jsx(qt,{index:!0,element:F.jsx(x0,{})}),F.jsx(qt,{path:"/catalog",element:F.jsx(E0,{})}),F.jsx(qt,{path:"/favorites",element:F.jsx(C0,{})})]}),F.jsx(qt,{path:"*",element:F.jsx(Wv,{to:"/"})})]})}const _0=gd`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -161,4 +161,4 @@ Error generating stack: `+o.message+`
     text-decoration: none;
     color: inherit;
   }
-`;ti.createRoot(document.getElementById("root")).render(F.jsx(Xs.StrictMode,{children:F.jsxs(Jv,{basename:"/advert-cars",children:[F.jsx(qm,{styles:_0}),F.jsx(P0,{})]})}));export{Xs as R,Zi as _,N0 as a,rm as b,gd as c,zd as g,F as j,R0 as k,et as n,S as r};
+`;ti.createRoot(document.getElementById("root")).render(F.jsx(Xs.StrictMode,{children:F.jsxs(Jv,{basename:"/advert-cars",children:[F.jsx(qm,{styles:_0}),F.jsx(P0,{})]})}));export{Xs as R,Zi as _,zd as a,N0 as b,rm as c,gd as d,c0 as g,F as j,R0 as k,et as n,S as r};
