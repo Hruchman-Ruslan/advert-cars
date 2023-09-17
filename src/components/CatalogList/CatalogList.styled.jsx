@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const List = styled.ul`
   display: grid;
@@ -8,8 +8,4 @@ export const List = styled.ul`
   justify-items: center;
   align-items: center;
   margin-bottom: 100px;
-
-  /* @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  } */
 `;

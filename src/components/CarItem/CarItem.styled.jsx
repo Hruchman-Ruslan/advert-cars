@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Item = styled.li`
   max-width: 400px;
@@ -57,10 +57,6 @@ export const Price = styled.p`
 
 export const WrapperDetails = styled.div`
   margin-bottom: 28px;
-
-  /* @media (max-width: 1028px) {
-    margin-bottom: 48px;
-  } */
 `;
 
 export const ListDetails = styled.ul`
